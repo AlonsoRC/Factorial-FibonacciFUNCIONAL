@@ -5,17 +5,19 @@
  */
 package factorial.fibonacci1;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.*;
 /**
  *
  * @author Alumno
  */
-public class FactorialFibonacci extends JFrame{
+public class FactorialFibonacci extends JFrame implements ActionListener{
         
     public JLabel Numero,respuestaFIBO,respuestaFACTO ;           // etiqueta o texto no editable
     public JTextField numero, rFIBO, rFACTO;        // caja de texto, para insertar datos
     public JButton obtener;          // boton con una determinada accion
-
+   public int NumeroRecibido, Factorial;
 
     public FactorialFibonacci() {
         super();                    // usamos el contructor de la clase padre JFrame
@@ -60,6 +62,33 @@ public class FactorialFibonacci extends JFrame{
         this.add(rFIBO);
         this.add(respuestaFACTO);
         this.add(rFACTO);
+    }   
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if(e.getSource() == obtener){
+            int resultado = Integer.parseInt(numero.getText());
+            int nums = 0;
+            int nums2=1;
+        
+            String fibona="0 1 ";
+            for(int i=0; i<=resultado-2; i++){
+                int nums3;
+                fibona+=(nums2+nums)+" ";
+                nums3=nums;
+                nums=nums2;
+                nums2=nums3+nums2;                    
+            }
+            rFIBO.setText(String.valueOf(fibona));  
+        }
+        if(e.getSource() == obtener){
+            NumeroRecibido = Integer.parseInt(numero.getText());
+            Factorial = NumeroRecibido;
+            for(int i = NumeroRecibido - 1; i >= 1; i--){
+                Factorial = Factorial *  i; 
+            }
+            rFACTO.setText(String.valueOf(Factorial));
+        }
     }
-    
+   
+  
 }
