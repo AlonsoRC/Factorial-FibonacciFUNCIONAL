@@ -47,7 +47,8 @@ public class FactorialFibonacci extends JFrame implements ActionListener{
         Numero.setBounds(50, 50, 100, 25);     // colocamos posicion y tamanio al texto (x, y, ancho, alto)
         numero.setBounds(150, 50, 100, 25);    // colocamos posicion y tamanio a la caja (x, y, ancho, alto)
         obtener.setText("Obtener");            // colocamos un texto al boton
-        obtener.setBounds(50, 100, 200, 30);   // colocamos posicion y tamanio al boton (x, y, ancho, alto)
+        obtener.setBounds(50, 100, 200, 30);
+        obtener.addActionListener(this);// colocamos posicion y tamanio al boton (x, y, ancho, alto)
         respuestaFIBO.setText("Fibonacci");
         respuestaFIBO.setBounds(50, 150, 100, 25);
         rFIBO.setBounds(150, 150, 100, 25);
@@ -81,6 +82,7 @@ public class FactorialFibonacci extends JFrame implements ActionListener{
             rFIBO.setText(String.valueOf(fibona));  
         }
         if(e.getSource() == obtener){
+            System.out.println("pasa");
             NumeroRecibido = Integer.parseInt(numero.getText());
             Factorial = NumeroRecibido;
             for(int i = NumeroRecibido - 1; i >= 1; i--){
